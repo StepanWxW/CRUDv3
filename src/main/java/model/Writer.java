@@ -26,6 +26,9 @@ public class Writer {
         this.posts = posts;;
     }
 
+    public Writer() {
+    }
+
     public Writer(long id) {
         this.id = id;
     }
@@ -73,12 +76,11 @@ public class Writer {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "\nWriter: " +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
+                ",\n firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", region=" + region +
-                ", posts=" + posts +
-                '}';
+                ", posts=" + posts;
     }
 }
