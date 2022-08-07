@@ -7,6 +7,19 @@ public class Post {
    private String content;
    private Timestamp create;
    private Timestamp update;
+   private PostStatus postStatus;
+
+    public Post() {
+
+    }
+
+    public PostStatus getPostStatus() {
+        return postStatus;
+    }
+
+    public void setPostStatus(PostStatus postStatus) {
+        this.postStatus = postStatus;
+    }
 
     public Long getId() {
         return id;
@@ -65,13 +78,32 @@ public class Post {
         this.content = content;
     }
 
+    public Post(long id, String content, Timestamp create, Timestamp update, PostStatus postStatus) {
+        this.id = id;
+        this.content = content;
+        this.create = create;
+        this.update = update;
+        this.postStatus = postStatus;
+    }
+
+    public Post(String content, PostStatus postStatus) {
+        this.content = content;
+        this.postStatus = postStatus;
+    }
+
+    public Post(long id, String content, PostStatus postStatus) {
+        this.id = id;
+        this.content = content;
+        this.postStatus = postStatus;
+    }
+
     @Override
     public String toString() {
-        return "Post{" +
+        return "\nPost: " +
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", create=" + create +
                 ", update=" + update +
-                '}';
+                ", postStatus=" + postStatus;
     }
 }

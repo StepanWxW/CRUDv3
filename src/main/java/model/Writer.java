@@ -9,23 +9,21 @@ public class Writer {
     private String lastName;
     private Region region;
     private List<Post> posts;
-    private Role role;
 
-    public Writer(long id, String firstName, String lastName, List<Post> posts, Region region, Role role) {
+
+    public Writer(long id, String firstName, String lastName, List<Post> posts, Region region) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.region = region;
         this.posts = posts;
-        this.role = role;
     }
 
-    public Writer(String firstName, String lastName, List<Post> posts, Region region, Role role) {
+    public Writer(String firstName, String lastName, List<Post> posts, Region region) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.region = region;
-        this.posts = posts;
-        this.role = role;
+        this.posts = posts;;
     }
 
     public Writer(long id) {
@@ -72,13 +70,6 @@ public class Writer {
         this.posts = posts;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
     @Override
     public String toString() {
@@ -88,7 +79,6 @@ public class Writer {
                 ", lastName='" + lastName + '\'' +
                 ", region=" + region +
                 ", posts=" + posts +
-                ", role=" + role +
                 '}';
     }
 }

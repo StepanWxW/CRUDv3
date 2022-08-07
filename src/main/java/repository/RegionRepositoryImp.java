@@ -1,6 +1,6 @@
 package repository;
 
-import controller.ConnectMySQL;
+import util.ConnectMySQL;
 import directory.RegionDirectory;
 import model.Region;
 import repository.implementation.RegionRepository;
@@ -43,30 +43,8 @@ public class RegionRepositoryImp extends ConnectMySQL implements RegionRepositor
 
     @Override
     public Region getByID(Long id) {
-        Region region = new Region();
-        ResultSet resultSet = null;
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(RegionDirectory.REGION_GIT_ID);
-        ) {
-            preparedStatement.setLong(1, id);
-            resultSet = preparedStatement.executeQuery();
-            region.setId(id);
-            while (resultSet.next()) {
-                region.setName(resultSet.getString("REGION"));
-            }
-        } catch (SQLException e) {
-            System.out.println("Problem with getId Region");
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Problem whit close resultSet");;
-            }
-        }
-        return region;
-    }
+        return getAll().stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
+   }
 
     @Override
     public Region update(Region region) {
