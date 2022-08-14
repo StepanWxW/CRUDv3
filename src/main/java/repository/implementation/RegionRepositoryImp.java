@@ -1,9 +1,9 @@
-package repository;
+package repository.implementation;
 
+import repository.RegionRepository;
 import util.ConnectMySQL;
 import directory.RegionDirectory;
 import model.Region;
-import repository.implementation.RegionRepository;
 
 import java.sql.*;
 import java.util.ArrayList;

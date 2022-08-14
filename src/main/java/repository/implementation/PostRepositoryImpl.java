@@ -1,11 +1,9 @@
-package repository;
+package repository.implementation;
 
 import directory.PostDirectory;
-import directory.RegionDirectory;
 import model.Post;
 import model.PostStatus;
-import model.Region;
-import repository.implementation.PostRepository;
+import repository.PostRepository;
 import util.ConnectMySQL;
 
 import java.sql.*;
@@ -31,9 +29,9 @@ public class PostRepositoryImpl extends ConnectMySQL implements PostRepository {
     @Override
     public List<Post> getAll() {
         List<Post> postsList = new ArrayList<>();
-        try(Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(PostDirectory.POST_GET_ALL);
-            ResultSet resultSet = preparedStatement.executeQuery()){
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(PostDirectory.POST_GET_ALL);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
                 Post post = new Post();
                 post.setId(resultSet.getLong(1));
@@ -51,7 +49,7 @@ public class PostRepositoryImpl extends ConnectMySQL implements PostRepository {
 
     @Override
     public Post getByID(Long id) {
-        return getAll().stream().filter(x->x.getId().equals(id)).findFirst().orElse(null);
+        return getAll().stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
@@ -81,7 +79,8 @@ public class PostRepositoryImpl extends ConnectMySQL implements PostRepository {
             System.out.println("Problem with Delete Post");
         }
     }
-    private Timestamp getTimeStamp(){
+
+    private Timestamp getTimeStamp() {
         return new Timestamp(System.currentTimeMillis());
     }
 }

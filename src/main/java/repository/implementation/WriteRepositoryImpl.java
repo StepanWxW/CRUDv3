@@ -1,11 +1,9 @@
-package repository;
+package repository.implementation;
 
-import directory.PostDirectory;
-import directory.RegionDirectory;
 import directory.WriterDirectory;
 import model.Post;
 import model.Writer;
-import repository.implementation.WriterRepository;
+import repository.WriterRepository;
 import util.ConnectMySQL;
 
 import java.sql.Connection;
