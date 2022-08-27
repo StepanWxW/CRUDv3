@@ -15,6 +15,50 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="2" author="root" runOnChange="true">
+        <createTable tableName="post">
+            <column  name="Id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="content" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="createTime" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updateTime" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="postStatus" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="root" runOnChange="true">
+        <createTable tableName="writer">
+            <column  name="Id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstName" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lastName" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="idRegion" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="root" runOnChange="true">
+        <createTable tableName="writerpost">
+            <column  name="idWriter" type="int">
+            </column>
+            <column name="idPost" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 
 
 </databaseChangeLog>

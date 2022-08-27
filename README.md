@@ -26,6 +26,12 @@ PostStatus(enum ACTIVE, DELETED)
 
 ### Решение
 
+# Для работы вам понадобиться скачать и установить MySQL
+* Зайти в пакет util класс ConnectMySQL и указать:
+1. Порт (по умолчанию он 3306) в MYSQL_URL
+2. Ваше имя пользователя в MYSQL_USERNAME
+3. Ваш пароль в MYSQL_PASSWORD
+
 #  Настройка Luquibase:
 1. Скачать luquibase https://www.liquibase.org/download
 2. Для работы с MySQL требуется скачать драйвер JDBS  в формате JAR и поместить в папку liquibase\lib . JAR можно скачать здесь https://dbschema.com/jdbc-driver/MySql.html
