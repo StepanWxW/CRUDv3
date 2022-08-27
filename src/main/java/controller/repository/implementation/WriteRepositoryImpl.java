@@ -1,9 +1,9 @@
-package repository.implementation;
+package controller.repository.implementation;
 
 import directory.WriterDirectory;
 import model.Post;
 import model.Writer;
-import repository.WriterRepository;
+import controller.repository.WriterRepository;
 import util.ConnectMySQL;
 
 import java.sql.Connection;
@@ -49,7 +49,7 @@ public class WriteRepositoryImpl extends ConnectMySQL implements WriterRepositor
                 writer.setId(id);
                 writer.setFirstName(resultWriter.getString(2));
                 writer.setLastName(resultWriter.getString(3));
-                writer.setRegion(new RegionRepositoryImp().getByID(resultWriter.getLong(4)));
+                writer.setRegion(new RegionRepositoryImp().getById(resultWriter.getLong(4)));
                 List<Post> postList = getAllPost(id);
                 writer.setPosts(postList);
                 writerList.add(writer);
@@ -69,7 +69,7 @@ public class WriteRepositoryImpl extends ConnectMySQL implements WriterRepositor
                 long writerId = resultWritePost.getLong(1);
                 long postId = resultWritePost.getLong(2);
                 if (writerId == id) {
-                    postList.add(new PostRepositoryImpl().getByID(postId));
+                    postList.add(new PostRepositoryImpl().getById(postId));
                 }
             }
         } catch (SQLException e) {
@@ -79,7 +79,7 @@ public class WriteRepositoryImpl extends ConnectMySQL implements WriterRepositor
     }
 
     @Override
-    public Writer getByID(Long id) {
+    public Writer getById(Long id) {
         return getAll().stream().
                 filter(writer -> writer.getId().equals(id)).
                 findFirst().orElse(null);

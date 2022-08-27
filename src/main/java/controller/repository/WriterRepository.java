@@ -1,4 +1,4 @@
-package repository;
+package controller.repository;
 
 import model.Writer;
 
@@ -11,7 +11,7 @@ public interface WriterRepository extends GenericRepository<Writer,Long> {
     @Override
     List<Writer> getAll();
     @Override
-    Writer getByID(Long id);
+    Writer getById(Long id);
     @Override
     Writer update(Writer user);
     @Override

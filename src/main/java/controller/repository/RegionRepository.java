@@ -1,4 +1,4 @@
-package repository;
+package controller.repository;
 
 import model.Region;
 
@@ -13,7 +13,7 @@ public interface RegionRepository extends GenericRepository<Region, Long> {
     List<Region> getAll();
 
     @Override
-    Region getByID(Long id);
+    Region getById(Long id);
 
     @Override
     Region update(Region region);

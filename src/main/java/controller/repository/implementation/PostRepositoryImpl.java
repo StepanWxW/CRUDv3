@@ -1,9 +1,9 @@
-package repository.implementation;
+package controller.repository.implementation;
 
+import controller.repository.PostRepository;
 import directory.PostDirectory;
 import model.Post;
 import model.PostStatus;
-import repository.PostRepository;
 import util.ConnectMySQL;
 
 import java.sql.*;
@@ -48,7 +48,7 @@ public class PostRepositoryImpl extends ConnectMySQL implements PostRepository {
     }
 
     @Override
-    public Post getByID(Long id) {
+    public Post getById(Long id) {
         return getAll().stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 

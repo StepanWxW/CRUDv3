@@ -1,14 +1,14 @@
 package view;
 
 
+import controller.RegionController;
 import directory.MenuDirectory;
 import model.Region;
-import repository.implementation.RegionRepositoryImp;
 
 import java.util.Scanner;
 
 public class RegionMenu {
-    RegionRepositoryImp regionRepository = new RegionRepositoryImp();
+    RegionController regionController = new RegionController();
 
     public void startRegionMenu() {
         System.out.println(MenuDirectory.MAIN_MENU);
@@ -32,11 +32,11 @@ public class RegionMenu {
     }
     private void create() {
         System.out.println("Enter Region please:");
-        regionRepository.create(new Region(scanLine()));
+        regionController.create(new Region(scanLine()));
         System.out.println("Congratulation: create is complete.");
     }
     private void readAll() {
-        String[] words = regionRepository.getAll().toString().split("},");
+        String[] words = regionController.getAll().toString().split("},");
         for (String word : words) {
             System.out.println(word);
         }
@@ -45,7 +45,7 @@ public class RegionMenu {
         System.out.println("Enter id region please:");
         try {
             Long readId = Long.valueOf(scanLine());
-            Region region = regionRepository.getByID(readId);
+            Region region = regionController.getById(readId);
             if (region != null) {
                 System.out.println(region);
             } else {
@@ -59,7 +59,7 @@ public class RegionMenu {
         System.out.println("Enter id to delete region please:");
         try {
             Long readId = Long.valueOf(scanLine());
-                regionRepository.remove(readId);
+                regionController.remove(readId);
         } catch (NumberFormatException e) {
             System.out.println("Input number please");
         }
@@ -68,9 +68,9 @@ public class RegionMenu {
         System.out.println("Enter id to update region please:");
         try {
             Long readId = Long.valueOf(scanLine());
-            if(regionRepository.getByID(readId) != null) {
+            if(regionController.getById(readId) != null) {
                 System.out.println("Enter please new region for id: " +readId);
-                regionRepository.update(new Region(readId, scanLine()));
+                regionController.update(new Region(readId, scanLine()));
             } else {
                 System.out.println("This region is missing");
             }

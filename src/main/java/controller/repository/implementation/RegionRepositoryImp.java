@@ -1,6 +1,6 @@
-package repository.implementation;
+package controller.repository.implementation;
 
-import repository.RegionRepository;
+import controller.repository.RegionRepository;
 import util.ConnectMySQL;
 import directory.RegionDirectory;
 import model.Region;
@@ -42,7 +42,7 @@ public class RegionRepositoryImp extends ConnectMySQL implements RegionRepositor
     }
 
     @Override
-    public Region getByID(Long id) {
+    public Region getById(Long id) {
         return getAll().stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
    }
 

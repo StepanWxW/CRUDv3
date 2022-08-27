@@ -1,4 +1,4 @@
-package repository;
+package controller.repository;
 
 import model.Post;
 
@@ -12,7 +12,7 @@ public interface PostRepository extends GenericRepository<Post,Long> {
     List<Post> getAll();
 
     @Override
-    Post getByID(Long id);
+    Post getById(Long id);
 
     @Override
     Post update(Post post);

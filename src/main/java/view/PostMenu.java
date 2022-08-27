@@ -1,15 +1,15 @@
 package view;
 
 
+import controller.PostController;
 import directory.MenuDirectory;
 import model.Post;
 import model.PostStatus;
-import repository.implementation.PostRepositoryImpl;
 
 import java.util.Scanner;
 
 public class PostMenu {
-        PostRepositoryImpl postRepository = new PostRepositoryImpl();
+        PostController postController = new PostController();
     public void startPostMenu() {
         System.out.println(MenuDirectory.MAIN_MENU);
         switch (scanLine()) {
@@ -35,11 +35,11 @@ public class PostMenu {
         String post = scanLine();
         System.out.println(ACTIVE_DELETED);
         PostStatus anEnum = roleAdd();
-        postRepository.create(new Post(post, anEnum));
+        postController.create(new Post(post, anEnum));
         System.out.println("Congratulation: create is complete.");
     }
     private void readAll() {
-        String[] words = postRepository.getAll().toString().split("},");
+        String[] words = postController.getAll().toString().split("},");
         for (String word : words) {
             System.out.println(word);
         }
@@ -48,7 +48,7 @@ public class PostMenu {
         System.out.println("Enter id post please:");
         try {
             Long readId = Long.valueOf(scanLine());
-            Post post = postRepository.getByID(readId);
+            Post post = postController.getById(readId);
             if (post != null) {
                 System.out.println(post);
             } else {
@@ -62,7 +62,7 @@ public class PostMenu {
         System.out.println("Enter id to delete post please:");
         try {
             Long readId = Long.valueOf(scanLine());
-            postRepository.remove(readId);
+            postController.remove(readId);
         } catch (NumberFormatException e) {
             System.out.println("Input number please");
         }
@@ -71,12 +71,12 @@ public class PostMenu {
         System.out.println("Enter id to update post please:");
         try {
             Long readId = Long.valueOf(scanLine());
-            if(postRepository.getByID(readId) != null) {
+            if(postController.getById(readId) != null) {
                 System.out.println("Enter please new post for id: " +readId);
                 String postUp = scanLine();
                 System.out.println(ACTIVE_DELETED);
                 PostStatus anEnum = roleAdd();
-                postRepository.update(new Post(readId, postUp,anEnum));
+                postController.update(new Post(readId, postUp,anEnum));
             } else {
                 System.out.println("This post is missing");
             }
