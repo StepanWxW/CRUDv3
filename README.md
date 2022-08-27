@@ -23,3 +23,13 @@ PostStatus(enum ACTIVE, DELETED)
 Результатом выполнения проекта должен быть отдельный репозиторий на github, с описанием задачи, проекта и инструкцией по локальному запуску проекта.
 
 Технологии : Java, MySQL, JDBC, Maven, Liquibase, JUnit, Mockito
+
+### Решение
+
+#  Настройка Luquibase:
+1. Скачать luquibase https://www.liquibase.org/download
+2. Для работы с MySQL требуется скачать драйвер JDBS  в формате JAR и поместить в папку liquibase\lib . JAR можно скачать здесь https://dbschema.com/jdbc-driver/MySql.html
+3. В командной строке перейти в папку с проектом src/main/java/resources/ 
+<br/> Ввести команду liquibase --changeLogFile=changelog.xml update , затем "s".
+
+Все должно работать.

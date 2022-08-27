@@ -15,15 +15,6 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet context="legacy" author="author (generated)" id="1">
-        <createTable tableName="test">
-            <column autoIncrement="true" name="id" type="SERIAL">
-                <constraints nullable="false"/>
-            </column>
-            <column name="user_name" type="VARCHAR(255)"/>
-            <column name="preferences" type="TEXT"/>
-        </createTable>
-    </changeSet>
 
 
 </databaseChangeLog>
