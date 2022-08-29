@@ -1,12 +1,15 @@
 package controller;
 
 import model.Region;
+import repository.implementation.RegionRepositoryImp;
 import services.RegionService;
 
 import java.util.List;
 
 public class RegionController {
+
     RegionService service = new RegionService();
+
     public Region create(Region region) {
         return service.create(region);
     }

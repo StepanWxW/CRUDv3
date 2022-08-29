@@ -1,7 +1,7 @@
 package services;
 
 import model.Post;
-import controller.repository.implementation.PostRepositoryImpl;
+import repository.implementation.PostRepositoryImpl;
 
 import java.util.List;
 

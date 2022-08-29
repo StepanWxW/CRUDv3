@@ -1,6 +1,6 @@
-package controller.repository.implementation;
+package repository.implementation;
 
-import controller.repository.PostRepository;
+import repository.PostRepository;
 import directory.PostDirectory;
 import model.Post;
 import model.PostStatus;

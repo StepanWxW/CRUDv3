@@ -1,12 +1,25 @@
 package services;
 
 import model.Region;
-import controller.repository.implementation.RegionRepositoryImp;
+import repository.implementation.RegionRepositoryImp;
 
 import java.util.List;
 
 public class RegionService {
-    private RegionRepositoryImp repository = new RegionRepositoryImp();
+
+
+    private RegionRepositoryImp repository;
+
+    public RegionService() {
+        this.repository = new RegionRepositoryImp();
+    }
+    public RegionService(RegionRepositoryImp repository) {
+        this.repository = repository;
+    }
+    public RegionRepositoryImp getRepository() {
+        return repository;
+    }
+
     public Region create(Region region) {
         return repository.create(region);
     }

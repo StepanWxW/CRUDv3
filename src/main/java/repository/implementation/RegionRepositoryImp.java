@@ -1,6 +1,6 @@
-package controller.repository.implementation;
+package repository.implementation;
 
-import controller.repository.RegionRepository;
+import repository.RegionRepository;
 import util.ConnectMySQL;
 import directory.RegionDirectory;
 import model.Region;

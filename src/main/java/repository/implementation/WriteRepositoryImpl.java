@@ -1,9 +1,9 @@
-package controller.repository.implementation;
+package repository.implementation;
 
 import directory.WriterDirectory;
 import model.Post;
 import model.Writer;
-import controller.repository.WriterRepository;
+import repository.WriterRepository;
 import util.ConnectMySQL;
 
 import java.sql.Connection;

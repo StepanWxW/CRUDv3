@@ -1,7 +1,7 @@
 package services;
 
 import model.Writer;
-import controller.repository.implementation.WriteRepositoryImpl;
+import repository.implementation.WriteRepositoryImpl;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package controller.repository;
+package repository;
 
 import model.Region;
 

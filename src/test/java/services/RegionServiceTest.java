@@ -4,75 +4,40 @@ import model.Region;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repository.implementation.RegionRepositoryImp;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.*;
+
 public class RegionServiceTest {
-    RegionService regionService;
-
+    private RegionService regionService;
+    private RegionRepositoryImp mokRepository = mock(RegionRepositoryImp.class);
     @Before
-    public void createRegionService() {
-        regionService = new RegionService();
+     public void init () {
+       mokRepository = mock(RegionRepositoryImp.class);
+       regionService = new RegionService(mokRepository);
     }
 
     @Test
-    public void createRegionShouldBeInGetAll() {
-        Region regionTest = new Region("Test_name");
-        regionService.create(regionTest);
-        List<Region> regionList = regionService.getAll();
-        Region regionIn = new Region();
-        for (Region r : regionList) {
-            if (r.getName().equals(regionTest.getName())) {
-                regionIn = r;
-            }
-        }
-        Assert.assertEquals(regionIn.getName(), regionTest.getName());
-    }
-
-    @Test
-    public void getAllRegionShouldBeDifferentId() {
-        regionService.create(new Region("Test1"));
-        regionService.create(new Region("Test2"));
-        regionService.create(new Region("Test3"));
-        List<Region> regionList = regionService.getAll();
-        Region regionIn = new Region();
-        for (Region r : regionList) {
-            Assert.assertNotEquals(regionIn.getId(), r.getId());
-            regionIn = r;
-        }
-    }
-
-    @Test
-    public void deleteRegionShouldBeDeleted() {
-        Region region = new Region("TestDeleted");
-        regionService.create(region);
-        List<Region> regionList = regionService.getAll();
-        Long id;
-        for (Region r : regionList) {
-            if (r.getName().equals(region.getName())) {
-                id = r.getId();
-                regionService.remove(id);
-            }
-        }
-        List<Region> regionList2 = regionService.getAll();
-        for (Region r2 : regionList2) {
-            Assert.assertNotEquals(region.getName(), r2.getName());
-        }
-    }
-
-    @Test
-    public void updateRegionShouldBeUpdate() {
-        Region region = new Region("TestUpdate");
-        List<Region> regionList = regionService.getAll();
-        Long id;
-        Region regionUp;
-        for (Region r : regionList) {
-            if (r.getName().equals(region.getName())) {
-                id = r.getId();
-                regionUp = new Region(id,"TestUpIsSuccessful");
-                regionService.update(regionUp);
-                Assert.assertEquals(regionService.getById(id), new Region(id, "TestUpIsSuccessful"));
-            }
-        }
+    public void getAllRegionShouldReturnAllRegion() {
+        // given
+        List<Region> expected = new ArrayList<>();
+        Region region1 = new Region("Tomsk");
+        Region region2 = new Region("Moscow");
+        Region region3 = new Region("Seversk");
+        expected.add(region1);
+        expected.add(region2);
+        expected.add(region3);
+        // when
+        when(mokRepository.getAll()).thenReturn(expected);
+        List<Region> actual = regionService.getAll();
+        // then
+        assertEquals(expected, actual);
+        assertNotNull(actual);
+        verify(mokRepository, times(1)).getAll();
     }
 }
